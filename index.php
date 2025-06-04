@@ -29,6 +29,9 @@
         .btns{
             width: 50%;
             margin: auto;
+
+            display: flex;
+            justify-content: space-between;
         }
     </style>
     <div class="btns">
@@ -37,11 +40,13 @@
                 +
             </a>
         </button>
+        <button><a href="sales_report.php">銷售報表</a></button>
     </div>
     <table>
         <tr>
             <td>品項</td>
             <td>價格</td>
+            <td>操作</td>
         </tr>
         <?php
         foreach($items as $item):
