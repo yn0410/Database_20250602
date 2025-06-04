@@ -1,3 +1,4 @@
+<!-- 老師code 跟"add_item.php"差不多 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,21 +8,31 @@
 </head>
 <body>
     <h1>編輯品項</h1>
-    <!-- 老師code 跟"add_item.php"差不多 -->
-    <form action="./api/add_item.php" method="post">
+    <?php
+    $dsn = "mysql:host=localhost;dbname=store;charset=utf8";
+    $pdo = new PDO($dsn, 'root', '');
+    $id = $_GET['id'] ?? 0;
+    $item= $pdo->query("SELECT * FROM items WHERE id='$id'")->fetch(PDO::FETCH_ASSOC);
+    if (!$item) {
+        echo "<h2>品項不存在</h2>";
+        exit;
+    }
+    ?>
+    <form action="./api/update_item.php" method="post">
         <label for="name">品項名稱:</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" value="<?=$item['name'];?>" required>
         <br>
         <label for="price">價格:</label>
-        <input type="number" name="price" id="price" required>
+        <input type="number" name="price" id="price" value="<?=$item['price'];?>" required>
         <br>
         <label for="name">成本:</label>
-        <input type="text" name="cost" id="name" required>
+        <input type="text" name="cost" id="cost" value="<?=$item['cost'];?>" required>
         <br>
         <label for="price">庫存:</label>
-        <input type="number" name="stock" id="price" required>
+        <input type="number" name="stock" id="stock" value="<?=$item['stock'];?>" required>
         <br>
-        <button type="submit">新增</button>
+        <input type="hidden" name="id" value="<?=$item['id'];?>">
+        <button type="submit">編輯</button>
     </form>
 </body>
 </html>

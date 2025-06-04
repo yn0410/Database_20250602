@@ -11,7 +11,7 @@
     <?php
     $dsn="mysql:host=localhost;charset=utf8;dbname=store";
     $pdo=new PDO($dsn, 'root', '');
-    $items=$pdo->query("SELECT `name`,`price` FROM items")->fetchAll(PDO::FETCH_ASSOC);
+    $items=$pdo->query("SELECT `id`,`name`,`price` FROM items")->fetchAll(PDO::FETCH_ASSOC);
     // print_r($items);
     ?>
 
@@ -49,6 +49,10 @@
         <tr>
             <td><?=$item['name']?></td>
             <td><?=$item['price']?></td>
+            <td>
+                <a href='update_item.php?id=<?=$item['id'];?>'>編輯</a>
+                <a href='./api/delete_item.php?id=<?=$item['id'];?>'>刪除</a>
+            </td>
         </tr>
         <?php
         endforeach;
