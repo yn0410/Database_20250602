@@ -23,7 +23,7 @@ if($mem){
     session_start();
     // $_SESSION['mem']=$mem; //改成下方
     $_SESSION['mem']=$_POST['acc'];
-   header("location:../index.php");
+   header("location:../member_center.php");
 
 }else{
     //登入失敗

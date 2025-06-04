@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,9 @@
 </head>
 <body>
     <?php include 'header.php'?>
-    <main></main>
+    <main>
+        <h2>歡迎光臨，<?=$_SESSION['mem'];?></h2>
+    </main>
     <?php include 'footer.php'?>
     
 </body>
